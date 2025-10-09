@@ -1,0 +1,10 @@
+:root {
+    --hue-1-transparent: rgba(248, 251, 255, 0.6); /* #F8FBFF */
+    --hue-2-transparent: rgba(0, 168, 204, 0.6);   /* #00A8CC */
+    --hue-3-transparent: rgba(44, 62, 80, 0.6);    /* #2C3E50 */
+    --hue-4-transparent: rgba(0, 207, 252, 0.6);   /* Lighter cyan */
+    --hue-5-transparent: rgba(62, 90, 120, 0.6);   /* Lighter dark blue */
+    --hue-6-transparent: rgba(158, 242, 178, 0.6); /* Accent green */
+}
+
+@import "tailwindcss";

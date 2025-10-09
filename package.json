@@ -1,0 +1,39 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@cosmjs/amino": "^0.36.0",
+    "@cosmjs/cosmwasm-stargate": "^0.36.0",
+    "@cosmjs/proto-signing": "^0.36.0",
+    "@cosmjs/stargate": "^0.36.0",
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
+    "@keplr-wallet/provider-extension": "^0.12.275",
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/image": "^1.11.0",
+    "@nuxt/scripts": "^0.12.0",
+    "@nuxt/test-utils": "^3.19.2",
+    "@nuxt/ui": "^4.0.0",
+    "@quasar/extras": "^1.17.0",
+    "@unhead/vue": "^2.0.17",
+    "apexcharts": "^5.3.5",
+    "eslint": "^9.36.0",
+    "gsap": "^3.13.0",
+    "motion-v": "^1.7.1",
+    "nuxt": "^4.1.2",
+    "nuxt-quasar-ui": "^2.1.2",
+    "quasar": "^2.18.5",
+    "typescript": "^5.9.2",
+    "vue": "^3.5.21",
+    "vue-router": "^4.5.1",
+    "vue3-apexcharts": "^1.8.0"
+  }
+}
