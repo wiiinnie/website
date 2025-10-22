@@ -274,7 +274,7 @@
             const response = await fetch(`https://api-mainnet-stage.cexplorer.io/v1/pool/detail?pool_id=pool16fyda57p3c8gp5r6gmcq5tvqsp6mnzwvkxswgznkuh8wztrp6vv`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
-            return data?.data?.active_stake || 0;
+            return data?.data?.active_stake || data?.data?.live_stake || 0;
         } catch (error) {
             console.error('Error fetching Cardano nodes:', error);
             cardanoStakeError.value = error instanceof Error ? error.message : 'Unknown error';
