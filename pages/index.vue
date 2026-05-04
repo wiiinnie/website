@@ -312,46 +312,42 @@
         }
     };
 
-    const getHermesDuskNodes = async () => {
-        try {
-            isLoadingDuskStake.value = true;
-            duskStakeError.value = null;
+const getHermesDuskNodes = async () => {
+    try {
+        isLoadingDuskStake.value = true;
+        duskStakeError.value = null;
 
-            // Выполняем POST запрос к API
-            const response = await fetch('https://nodes.dusk.network/on/node/provisioners', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+        const targetKeys = [
+            "24NyH4g3JuRjgCBD7ePFiZ4F7izSLVpSE4ism1Lt4qeaKEzu9GCtVuFRVZ31DGHM3fcNiwh6euYN49eUUN9fYdKtT6G6Zc27Lsoj3TT1k2WEMWubvkurQufQUsxRTPgmPWS2",
+            "z6jWLN6NzgpzMJgJ5Mv2NAtmQ9T7EdVyNUSPGNpvXmRq7onepTFJw7qDadpuC65sTBUm533yQRYgr8zNRH7Nrv4dTimdqLU3qBvkeHQx4bJYfJCVkrhQhRYcFzUvtmVvLFv",
+            "2131Xe28JCogeQqgK4VTjtDwY5GJ5oFSUQgQobAiFbUKcXK2BzpJdoj4iGammHGgkbnbykjqPVWmy3S83TDgqfPmtLgBv56ZzeuhHbuFy9bCerhU4JTwEi2oCxxPKSx5983T",
+            "256NgmtaAwqcatZgWkSbf8Gop3QptUTZ9ecf2obMtzDTRQWryzZdcxQgpgMRww1zRzbuFen8qKq9Xuz9mo1Ux399AQhcmYRUFpxFKzdb3oeVh7e3NyNQ1xu2C2VQNrw3wj6y",
+        ];
 
-            // Проверяем успешность запроса
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+        const response = await fetch('https://nodes.dusk.network/on/node/provisioners', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
 
-            // Получаем данные в формате JSON
-            const data = await response.json();
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-            // Фильтруем данные по конкретному ключу
-            const targetKey = "25WuCXfQeqzB6rjHiviS4jsKwTGdq4eDHa2hhbp4KGP8xxH9eEwrX6AvhoToBNLbs6D5B5qKStoKNZeKopoBjYDRTy3diUqqNXnYB2vtXSbjKuiYvJjRP2vZp3QgWyNjMr8F";
-            const filteredNode = data.find((node: any) => node.key === targetKey);
+        const data = await response.json();
+        if (!Array.isArray(data)) throw new Error('Invalid response format');
 
-            if (filteredNode) {
-                // Возвращаем сумму amount + reward, конвертированную в DUSK
-                return (filteredNode.amount) / 1000000000;
-            }
+        // sum amount across all matching provisioners, convert LUX -> DUSK
+        const totalDusk = data
+            .filter((node: any) => targetKeys.includes(node.key))
+            .reduce((sum: number, node: any) => sum + Number(node.amount || 0), 0) / 1_000_000_000;
 
-            return 0;
-
-        } catch (error) {
-            console.error('Error fetching Dusk nodes:', error);
-            duskStakeError.value = error instanceof Error ? error.message : 'Unknown error';
-            return 0;
-        } finally {
-            isLoadingDuskStake.value = false;
-        }
-    };
+        return totalDusk;
+    } catch (error) {
+        console.error('Error fetching Dusk nodes:', error);
+        duskStakeError.value = error instanceof Error ? error.message : 'Unknown error';
+        return 0;
+    } finally {
+        isLoadingDuskStake.value = false;
+    }
+};
 
     // Lifecycle hook
     onBeforeMount(() => {
