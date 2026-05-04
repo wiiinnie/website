@@ -83,6 +83,9 @@
                 <q-card-section v-if="props.name === 'Nym'">
                     <NymHowTo :nodes="props.nymNodes" />
                 </q-card-section>
+                <q-card-section v-if="props.name === 'Dusk'">
+                    <DuskHowTo />
+                </q-card-section>
             </q-card>
         </q-dialog>
     </div>
@@ -92,6 +95,7 @@
     import { ref, computed, onMounted } from "vue";
     import CardanoHowTo from "./projects/CardanoHowTo.vue";
     import NymHowTo from "./projects/NymHowTo.vue";
+    import DuskHowTo from "./projects/DuskHowTo.vue";
 
     // Условный импорт только на клиенте
     let VueApexCharts = null;
