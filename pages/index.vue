@@ -128,7 +128,7 @@
                         :enable-on-hover="false" />
                 </h2>
                 <div class="projects-grid">
-                    <TokenCard :soon="true" :name="TokensNetworks[3].name" :symbol="TokensNetworks[3].symbol"
+                    <TokenCard :name="TokensNetworks[3].name" :symbol="TokensNetworks[3].symbol"
                         :description="TokensNetworks[3].description" :color="TokensNetworks[3].color"
                         :logo="TokensNetworks[3].logo" :price-history="duskPriceHistory" :latest-price="duskLatestPrice"
                         :delegated-amount="hermesDuskStake" :is-loading="isLoadingDuskStake" />
@@ -199,7 +199,7 @@
         { label: 'Cardano', ariaLabel: 'View Cardano projects', link: '#cardano' },
         { label: 'Midnight', ariaLabel: 'View Midnight projects', link: '#midnight', soon: true },
         { label: 'Nym', ariaLabel: 'View Nym projects', link: '#nym' },
-        { label: 'Dusk', ariaLabel: 'View Dusk projects', link: '#dusk', soon: true },
+        { label: 'Dusk', ariaLabel: 'View Dusk projects', link: '#dusk' },
         { label: 'About', ariaLabel: 'Learn about us', link: '#about' },
     ];
 
