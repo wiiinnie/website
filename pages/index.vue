@@ -199,7 +199,7 @@
         { label: 'Cardano', ariaLabel: 'View Cardano projects', link: '#cardano' },
         { label: 'Midnight', ariaLabel: 'View Midnight projects', link: '#midnight', soon: true },
         { label: 'Nym', ariaLabel: 'View Nym projects', link: '#nym' },
-        { label: 'Dusk', ariaLabel: 'View Dusk projects', link: '#dusk', soon: true },
+        { label: 'Dusk', ariaLabel: 'View Dusk projects', link: '#dusk' },
         { label: 'About', ariaLabel: 'Learn about us', link: '#about' },
     ];
 
