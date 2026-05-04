@@ -1,8 +1,10 @@
 <template>
     <div class="how-to-container">
         <div class="header">
-            <q-img src="/logo/dusk.png" class="header-logo" />
-            <h1 class="header-title">Stake DUSK</h1>
+            <div class="glitch-wrapper">
+                <GlitchText font-style="neon" text="DUSK" :speed="5" :enable-shadows="true"
+                    :enable-on-hover="false" />
+            </div>
             <p class="header-subtitle">
                 DUSK staking is handled through the Sozu Pool. Hermes Stakepool
                 operates 4 provisioner nodes within the pool.
@@ -82,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-    // static how-to: no reactive logic needed
+    import GlitchText from '../GlitchText.vue';
 </script>
 
 <style scoped>
@@ -98,18 +100,10 @@
         margin-bottom: 56px;
     }
 
-    .header-logo {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 16px;
-    }
-
-    .header-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin: 0 0 12px 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        letter-spacing: -0.5px;
+    .glitch-wrapper {
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
     }
 
     .header-subtitle {
@@ -207,9 +201,6 @@
     @media (max-width: 600px) {
         .how-to-container {
             padding: 32px 16px;
-        }
-        .header-title {
-            font-size: 2rem;
         }
         .step {
             flex-direction: column;
