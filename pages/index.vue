@@ -321,7 +321,7 @@ const getHermesDuskNodes = async () => {
             "24NyH4g3JuRjgCBD7ePFiZ4F7izSLVpSE4ism1Lt4qeaKEzu9GCtVuFRVZ31DGHM3fcNiwh6euYN49eUUN9fYdKtT6G6Zc27Lsoj3TT1k2WEMWubvkurQufQUsxRTPgmPWS2",
             "z6jWLN6NzgpzMJgJ5Mv2NAtmQ9T7EdVyNUSPGNpvXmRq7onepTFJw7qDadpuC65sTBUm533yQRYgr8zNRH7Nrv4dTimdqLU3qBvkeHQx4bJYfJCVkrhQhRYcFzUvtmVvLFv",
             "2131Xe28JCogeQqgK4VTjtDwY5GJ5oFSUQgQobAiFbUKcXK2BzpJdoj4iGammHGgkbnbykjqPVWmy3S83TDgqfPmtLgBv56ZzeuhHbuFy9bCerhU4JTwEi2oCxxPKSx5983T",
-            "256NgmtaAwqcatZgWkSbf8Gop3QptUTZ9ecf2obMtzDTRQWryzZdcxQgpgMRww1zRzbuFen8qKq9Xuz9mo1Ux399AQhcmYRUFpxFKzdb3oeVh7e3NyNQ1xu2C2VQNrw3wj6y",
+            "tzTjptP43v41mV5PAyAXmTRjBx8Za5QrkkhhbG1m3qpNrKkQ15nE8nVpH3d6Afqg8AQoNkc2gmaHs2QbRcSZRhFG731ddFPyZ3wWqHzBa9BHbk23t2yD1ZL5F7qCaa9a7We",
         ];
 
         const response = await fetch('https://nodes.dusk.network/on/node/provisioners', {
