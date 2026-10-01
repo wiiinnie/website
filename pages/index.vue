@@ -291,18 +291,24 @@
             const response = await fetch('/api/hermes');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
-            if (!Array.isArray(data)) throw new Error('Invalid response format');
-            hermesNymNodes.value = data;
-            let totalStake = 0;
-            data.forEach((element: any) => {
-                if (element.delegations && Array.isArray(element.delegations)) {
-                    element.delegations.forEach((delegation: any) => {
-                        const amount = Number(delegation.amount);
-                        if (!isNaN(amount)) totalStake += amount;
-                    });
-                }
-            });
-            return { stake: totalStake, nodes: data };
+            // API returns { family: { stake }, nodes: [...] } (Hermes family #19, stake in unym)
+            const nodes = Array.isArray(data?.nodes) ? data.nodes : (Array.isArray(data) ? data : null);
+            if (!nodes) throw new Error('Invalid response format');
+            hermesNymNodes.value = nodes;
+            let totalStake = Number(data?.family?.stake);
+            if (!Number.isFinite(totalStake) || totalStake <= 0) {
+                // Fallback: sum all delegations of the family's nodes
+                totalStake = 0;
+                nodes.forEach((element: any) => {
+                    if (element.delegations && Array.isArray(element.delegations)) {
+                        element.delegations.forEach((delegation: any) => {
+                            const amount = Number(delegation.amount);
+                            if (!isNaN(amount)) totalStake += amount;
+                        });
+                    }
+                });
+            }
+            return { stake: totalStake, nodes };
         } catch (error) {
             console.error('Error fetching Nym nodes:', error);
             nymStakeError.value = error instanceof Error ? error.message : 'Unknown error';
